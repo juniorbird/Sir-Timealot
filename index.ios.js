@@ -2,6 +2,7 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
+ 'use strict';
 
 import React, {
   AppRegistry,
@@ -11,19 +12,37 @@ import React, {
   View
 } from 'react-native';
 
+
+
 class SirTimealot extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      timeLeft: 9,
+    };
+    this.decreaseTime = this.decreaseTime.bind(this);
+  }
+
+  decreaseTime() {
+    this.setState({ timeLeft: --this.state.timeLeft });
+  }
+
+  componentDidMount() {
+    setInterval(this.decreaseTime, 1000, this.state.timeLeft);
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Welcome to Sir Timealot!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+          Time Left:
         </Text>
         <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+          {this.state.timeLeft} seconds
         </Text>
       </View>
     );
