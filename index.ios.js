@@ -9,6 +9,7 @@ import React, {
   Component,
   StyleSheet,
   Text,
+  TextInput,
   View
 } from 'react-native';
 
@@ -38,6 +39,11 @@ class SirTimealot extends Component {
         <Text style={styles.welcome}>
           Welcome to Sir Timealot!
         </Text>
+        <TextInput
+          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          onChangeText={(text) => this.setState({ timeLeft: text })}
+          value={this.state.timeLeft.toString()}
+        />
         <Text style={styles.instructions}>
           Time Left:
         </Text>
